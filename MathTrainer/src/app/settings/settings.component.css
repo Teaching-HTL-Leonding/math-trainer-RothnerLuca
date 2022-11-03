@@ -1,0 +1,21 @@
+input, label {
+  margin-left: 10px;
+}
+
+div, button {
+  margin-top: 10px;
+}
+
+input.ng-invalid {
+  background-color: red;
+  color: white;
+}
+
+.errors {
+  color: red;
+}
+
+#savedLabel {
+  color: green;
+}
+

@@ -1,0 +1,20 @@
+<h1>Exercises</h1>
+
+<button type="button" [disabled]="!this.inputValid" (click)="getExercises()">New Exercise</button>
+
+<p></p>
+<form #f="ngForm">
+  <div *ngFor="let exercise of this.exercises; let ix = index">
+    <label class="exerciseLabel">{{ exercise.numA }} {{exercise.operator | operatorStringToSign }} {{ exercise.numB }} = ?</label>
+    <input [id]="'result'+ix" [name]="'input'+ix" type="number" [(ngModel)]="this.resultInput[ix]" required="">
+    <label [hidden]="!this.showResults" [class]="'res'+this.validResult[ix]">
+      {{ this.validResult[ix] | booleanResultToString }}
+      <label [hidden]="this.validResult[ix]" [class]="'res'+this.validResult[ix]">
+        {{ exercise.result }}
+      </label>
+    </label>
+  </div>
+</form>
+
+<p></p>
+<button type="button" (click)="compareResults()" [disabled]="!f.form.valid || f.pristine">Done</button>

@@ -1,0 +1,24 @@
+<h1>Settings</h1>
+
+<form #f="ngForm">
+  <div>
+    <label>How many digits in a number?</label>
+    <input id="digitInput" name="digitInput" type="number" [(ngModel)]="this.digitInput" (ngModelChange)="onChange()" placeholder="1-4" min="1" max="4">
+  </div>
+  <div>
+    <label>How many questions?</label>
+    <input id="questionInput" name="questionInput" type="number" [(ngModel)]="this.questionInput" (ngModelChange)="onChange()" placeholder="5-20" min="5" max="20">
+  </div>
+  <div>
+    <label>Which operators?</label>
+    <input id="addCheckbox" name="add" #add="ngModel" [(ngModel)]="this.addCheckbox" (ngModelChange)="onChange()" type="checkbox">&#43;
+    <input id="subCheckbox" name="sub" #sub="ngModel" [(ngModel)]="this.subCheckbox" (ngModelChange)="onChange()" type="checkbox">&#8722;
+    <input id="multCheckbox" name="mult" #mult="ngModel" [(ngModel)]="this.multCheckbox" (ngModelChange)="onChange()" type="checkbox">&#215;
+    <input id="divCheckbox" name="div" #div="ngModel" [(ngModel)]="this.divCheckbox" (ngModelChange)="onChange()" type="checkbox">&#247;
+    <label class="errors" [hidden]="checkboxesValid() || add.pristine && sub.pristine && mult.pristine && div.pristine">Choose at least one operator!</label>
+  </div>
+  <div>
+    <button id="saveBtn" type="button" [disabled]="!f.form.valid || !checkboxesValid() || this.saved" (click)="updateConfig()">Save</button>
+    <label id="savedLabel" [hidden]="!this.saved">Saved changes!</label>
+  </div>
+</form>

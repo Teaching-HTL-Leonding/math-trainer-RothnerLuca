@@ -1,0 +1,12 @@
+.exerciseLabel {
+  float: left;
+  width: 100px;
+}
+
+.restrue {
+  color: green;
+}
+
+.resfalse {
+  color: red;
+}
